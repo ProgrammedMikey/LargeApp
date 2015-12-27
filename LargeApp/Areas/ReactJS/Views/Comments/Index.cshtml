@@ -1,0 +1,26 @@
+﻿@model IEnumerable<LargeApp.Areas.ReactJS.Models.CommentModel>
+
+
+<html>
+<head>
+    <title>Shoutout Box!</title>
+</head>
+<body>
+
+    @Html.React("CommentBox", new
+    {
+        initialData = Model,
+        url = Url.Action("Comments"),
+        submitUrl = Url.Action("AddComment"),
+        pollInterval = 2000,
+    })
+
+    <div id="content"></div>
+    <script src="https://fb.me/react-0.14.0.min.js"></script>
+    <script src="https://fb.me/react-dom-0.14.0.min.js"></script>
+    <script src="@Url.Content("~/Areas/Scripts/showdown.min.js")"></script>
+    <script src="@Url.Content("~/Areas/Scripts/Practice.jsx")"></script>
+
+    @Html.ReactInitJavaScript()
+</body>
+</html>
